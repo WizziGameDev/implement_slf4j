@@ -21,7 +21,7 @@ public class Java_06_RateLimiterRegistry {
         rateLimiterRegistry.addConfiguration("Adam", rateLimiterConfig);
 
         // Singleton
-        RateLimiter rateLimiter = SingletonRateLimiterRegistry.getInstace().rateLimiter("Adam", SingletonRateLimiterRegistry.updateConfig(10, Duration.ofSeconds(2)));
+        RateLimiter rateLimiter = SingletonRateLimiterRegistry.getInstace().rateLimiter("Adam", SingletonRateLimiterRegistry.updateConfig(10, Duration.ofSeconds(2), Duration.ofSeconds(2)));
     }
 }
 
@@ -37,10 +37,11 @@ class SingletonRateLimiterRegistry{
         return rateLimiterRegistry;
     }
 
-    public static RateLimiterConfig updateConfig(Integer period, Duration durationRefresh){
+    public static RateLimiterConfig updateConfig(Integer period, Duration durationRefresh, Duration timeout){
         return RateLimiterConfig.custom()
                 .limitForPeriod(period)
                 .limitRefreshPeriod(durationRefresh)
+                .timeoutDuration(timeout)
                 .build();
     }
 }

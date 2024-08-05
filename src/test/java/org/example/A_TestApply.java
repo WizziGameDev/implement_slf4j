@@ -31,7 +31,7 @@ public class A_TestApply {
     @SneakyThrows
     @DisplayName("Test Combine RateLimiter, Bulkhead, Retry")
     void testSave() {
-        RateLimiter rateLimiter = SingletonRateLimiterRegistry.getInstace().rateLimiter("Adam", SingletonRateLimiterRegistry.updateConfig(10, Duration.ofSeconds(1)));
+        RateLimiter rateLimiter = SingletonRateLimiterRegistry.getInstace().rateLimiter("Adam", SingletonRateLimiterRegistry.updateConfig(10, Duration.ofSeconds(1), Duration.ofSeconds(3)));
         ThreadPoolBulkhead threadPoolBulkhead = SingletonBulkheadThreadPoolRegistry.getInstance().bulkhead("Adam", SingletonBulkheadThreadPoolRegistry.updateConfig(5, 5, Duration.ofSeconds(1), 100));
         Retry retry = SingletonRetryRagistry.getInstance().retry("Adam", SingletonRetryRagistry.config(1, Duration.ofSeconds(2)));
         TimeLimiter limiter = SingletonTimeLimiterRegistry.getInstance().timeLimiter("Adam", SingletonTimeLimiterRegistry.updateConfig(Duration.ofSeconds(2), true));

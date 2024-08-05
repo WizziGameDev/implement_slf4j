@@ -48,7 +48,7 @@ class SingletonBulkheadRegistry {
 
     public static BulkheadConfig updateConfig() {
         return BulkheadConfig.custom()
-                .maxConcurrentCalls(20)
+                .maxConcurrentCalls(10)
                 .maxWaitDuration(Duration.ofSeconds(2))
                 .build();
     }
