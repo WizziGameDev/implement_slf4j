@@ -2,6 +2,7 @@
 
 You need dependency resilience4j
 
+```xml
 <dependency>
     <groupId>io.github.resilience4j</groupId>
     <artifactId>resilience4j-all</artifactId>
@@ -13,3 +14,4 @@ You need dependency resilience4j
     <artifactId>slf4j-simple</artifactId>
     <version>1.7.36</version>
 </dependency>
+```
